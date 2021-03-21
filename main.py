@@ -13,6 +13,7 @@ class Game:
         self.player_o.set('O')
         self.active = 0
         self._create_buttons()
+        self.load_default_color()
         self._score()
 
     def reset_buttons(self):
@@ -38,6 +39,8 @@ class Game:
 
         self.again.configure(state=tkinter.DISABLED)
 
+        self.load_default_color()
+
     def disable_buttons(self):
         self.button_1.configure(state=tkinter.DISABLED)
         self.button_2.configure(state=tkinter.DISABLED)
@@ -49,53 +52,78 @@ class Game:
         self.button_8.configure(state=tkinter.DISABLED)
         self.button_9.configure(state=tkinter.DISABLED)
 
+    def load_default_color(self):
+        self.button_1['bg'] = '#efefef'
+        self.button_2['bg'] = '#efefef'
+        self.button_3['bg'] = '#efefef'
+        self.button_4['bg'] = '#efefef'
+        self.button_5['bg'] = '#efefef'
+        self.button_6['bg'] = '#efefef'
+        self.button_7['bg'] = '#efefef'
+        self.button_8['bg'] = '#efefef'
+        self.button_9['bg'] = '#efefef'
+
+    @staticmethod
+    def win_change_color(btn_1, btn_2, btn_3):
+        btn_1['bg'] = '#007700'
+        btn_2['bg'] = '#007700'
+        btn_3['bg'] = '#007700'
+
     def win_checker_x(self):
 
         # Linha 0
         if self.button_1['text'] == 'X' and self.button_2['text'] == 'X' and self.button_3['text'] == 'X':
             self.player_x_score['text'] += 1
+            self.win_change_color(self.button_1, self.button_2, self.button_3)
             self.disable_buttons()
             self.again.configure(state=tkinter.ACTIVE)
 
         # Linha 1
         if self.button_4['text'] == 'X' and self.button_5['text'] == 'X' and self.button_6['text'] == 'X':
             self.player_x_score['text'] += 1
+            self.win_change_color(self.button_4, self.button_5, self.button_6)
             self.disable_buttons()
             self.again.configure(state=tkinter.ACTIVE)
 
         # Linha 2
         if self.button_7['text'] == 'X' and self.button_8['text'] == 'X' and self.button_9['text'] == 'X':
             self.player_x_score['text'] += 1
+            self.win_change_color(self.button_7, self.button_8, self.button_9)
             self.disable_buttons()
             self.again.configure(state=tkinter.ACTIVE)
 
         # Coluna 0
         if self.button_1['text'] == 'X' and self.button_4['text'] == 'X' and self.button_7['text'] == 'X':
             self.player_x_score['text'] += 1
+            self.win_change_color(self.button_1, self.button_4, self.button_7)
             self.disable_buttons()
             self.again.configure(state=tkinter.ACTIVE)
 
         # Coluna 1
         if self.button_2['text'] == 'X' and self.button_5['text'] == 'X' and self.button_8['text'] == 'X':
             self.player_x_score['text'] += 1
+            self.win_change_color(self.button_2, self.button_5, self.button_8)
             self.disable_buttons()
             self.again.configure(state=tkinter.ACTIVE)
 
         # Coluna 2
         if self.button_3['text'] == 'X' and self.button_6['text'] == 'X' and self.button_9['text'] == 'X':
             self.player_x_score['text'] += 1
+            self.win_change_color(self.button_3, self.button_6, self.button_9)
             self.disable_buttons()
             self.again.configure(state=tkinter.ACTIVE)
 
         # Direita esquerda
         if self.button_1['text'] == 'X' and self.button_5['text'] == 'X' and self.button_9['text'] == 'X':
             self.player_x_score['text'] += 1
+            self.win_change_color(self.button_1, self.button_5, self.button_9)
             self.disable_buttons()
             self.again.configure(state=tkinter.ACTIVE)
 
         # Esquerda direita
         if self.button_3['text'] == 'X' and self.button_5['text'] == 'X' and self.button_7['text'] == 'X':
             self.player_x_score['text'] += 1
+            self.win_change_color(self.button_3, self.button_5, self.button_7)
             self.disable_buttons()
             self.again.configure(state=tkinter.ACTIVE)
 
@@ -104,48 +132,56 @@ class Game:
         # Linha 0
         if self.button_1['text'] == 'O' and self.button_2['text'] == 'O' and self.button_3['text'] == 'O':
             self.player_o_score['text'] += 1
+            self.win_change_color(self.button_1, self.button_2, self.button_3)
             self.disable_buttons()
             self.again.configure(state=tkinter.ACTIVE)
 
         # Linha 1
         if self.button_4['text'] == 'O' and self.button_5['text'] == 'O' and self.button_6['text'] == 'O':
             self.player_o_score['text'] += 1
+            self.win_change_color(self.button_4, self.button_5, self.button_6)
             self.disable_buttons()
             self.again.configure(state=tkinter.ACTIVE)
 
         # Linha 2
         if self.button_7['text'] == 'O' and self.button_8['text'] == 'O' and self.button_9['text'] == 'O':
             self.player_o_score['text'] += 1
+            self.win_change_color(self.button_7, self.button_8, self.button_9)
             self.disable_buttons()
             self.again.configure(state=tkinter.ACTIVE)
 
         # Coluna 0
         if self.button_1['text'] == 'O' and self.button_4['text'] == 'O' and self.button_7['text'] == '0':
             self.player_o_score['text'] += 1
+            self.win_change_color(self.button_1, self.button_5, self.button_7)
             self.disable_buttons()
             self.again.configure(state=tkinter.ACTIVE)
 
         # Coluna 1
         if self.button_2['text'] == 'O' and self.button_5['text'] == 'O' and self.button_8['text'] == 'O':
             self.player_o_score['text'] += 1
+            self.win_change_color(self.button_2, self.button_5, self.button_8)
             self.disable_buttons()
             self.again.configure(state=tkinter.ACTIVE)
 
         # Coluna 2
         if self.button_3['text'] == 'O' and self.button_6['text'] == 'O' and self.button_9['text'] == 'O':
             self.player_o_score['text'] += 1
+            self.win_change_color(self.button_3, self.button_6, self.button_9)
             self.disable_buttons()
             self.again.configure(state=tkinter.ACTIVE)
 
         # Direita esquerda
         if self.button_1['text'] == 'O' and self.button_5['text'] == 'O' and self.button_9['text'] == 'O':
             self.player_o_score['text'] += 1
+            self.win_change_color(self.button_1, self.button_5, self.button_9)
             self.disable_buttons()
             self.again.configure(state=tkinter.ACTIVE)
 
         # Esquerda direita
         if self.button_3['text'] == 'O' and self.button_5['text'] == 'O' and self.button_7['text'] == 'O':
             self.player_o_score['text'] += 1
+            self.win_change_color(self.button_3, self.button_5, self.button_7)
             self.disable_buttons()
             self.again.configure(state=tkinter.ACTIVE)
 
@@ -159,19 +195,19 @@ class Game:
     def restart_score(self):
         self.player_x_score['text'] = 0
         self.player_o_score['text'] = 0
+        self.reset_buttons()
 
     def select(self, button):
-        if self.active == 0:
-            button['text'] = self.player_x.get()
-            button.configure(state=tkinter.DISABLED)
-            self.active = 1
-        else:
-            button['text'] = self.player_o.get()
-            button.configure(state=tkinter.DISABLED)
-            self.active = 0
-        self.win_checker_x()
-        self.win_checker_o()
-        self.full_buttons_checker()
+        if button['text'] == '':
+            if self.active == 0:
+                button['text'] = self.player_x.get()
+                self.active = 1
+            else:
+                button['text'] = self.player_o.get()
+                self.active = 0
+            self.win_checker_x()
+            self.win_checker_o()
+            self.full_buttons_checker()
 
     def _score(self):
         player_x = tkinter.Label(self.root, font='Arial 10 bold', text='PLAYER X:')
@@ -224,8 +260,8 @@ class Game:
         self.button_8.grid(row=2, column=1)
         self.button_9.grid(row=2, column=2)
 
-        self.again.grid(row=5, column=1)
-        self.restart.grid(row=5, column=2)
+        self.again.grid(row=3, column=2)
+        self.restart.grid(row=4, column=2)
 
     def start(self):
         self.root.mainloop()
