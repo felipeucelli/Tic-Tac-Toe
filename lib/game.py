@@ -439,12 +439,13 @@ class Game:
         player_o = tkinter.Label(self.root, font='Arial 10 bold', text='PLAYER O:')
 
         # Seta os pontos do player
-        self.player_x_score = tkinter.Label(self.root, font='Arial 10 bold', text=0)
-        self.player_o_score = tkinter.Label(self.root, font='Arial 10 bold', text=0)
+        self.player_x_score = tkinter.Label(self.root, font='Arial 10 bold', text=0, width=10, anchor='w')
+        self.player_o_score = tkinter.Label(self.root, font='Arial 10 bold', text=0, width=10, anchor='w')
 
         # Distribuição dos layers com o gerenciador de layout grid()
         player_x.grid(row=3, column=0)
         player_o.grid(row=4, column=0)
+
         self.player_x_score.grid(row=3, column=1)
         self.player_o_score.grid(row=4, column=1)
 
