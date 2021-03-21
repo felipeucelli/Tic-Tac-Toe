@@ -289,13 +289,13 @@ class Game:
             self.again.configure(state=tkinter.ACTIVE)
 
         # Coluna 0
-        if self.button_1['text'] == 'O' and self.button_4['text'] == 'O' and self.button_7['text'] == '0':
+        if self.button_1['text'] == 'O' and self.button_4['text'] == 'O' and self.button_7['text'] == 'O':
 
             # Incrementa um ponto para o player_O
             self.player_o_score['text'] += 1
 
             # Altera o background color
-            self.win_change_color(self.button_1, self.button_5, self.button_7)
+            self.win_change_color(self.button_1, self.button_4, self.button_7)
 
             # Desativa os inputs
             self.disable_buttons()
@@ -389,6 +389,9 @@ class Game:
 
         # Reinicia os pontos do player_O
         self.player_o_score['text'] = 0
+
+        # Redefine o primeiro jogador
+        self.active = 0
 
         # Reinicia o input
         self.reset_buttons()
