@@ -14,6 +14,7 @@ class Game:
     def __init__(self, master):
         self.root = master
         self.root.title('Tic Tac Toe')
+        self.root.resizable(width=False, height=False)
 
         # Instânciação do valor dos players
         # Player_X
@@ -393,6 +394,10 @@ class Game:
         # Redefine o primeiro jogador
         self.active = 0
 
+        # Redefine a marcação da vez do jogador
+        self.player_o_label['text'] = 'PLAYER O:'
+        self.player_x_label['text'] = '*PLAYER X:'
+
         # Reinicia o input
         self.reset_buttons()
 
@@ -412,12 +417,20 @@ class Game:
                 # Seta o player_X no input selecionado
                 button['text'] = self.player_x.get()
 
+                # Define a marcação da vez para o player_O
+                self.player_x_label['text'] = 'PLAYER X:'
+                self.player_o_label['text'] = '*PLAYER O:'
+
                 # Seta o player_O como próximo jogador
                 self.active = 1
             else:
 
                 # Seta o player_O no input selecionado
                 button['text'] = self.player_o.get()
+
+                # Define a marcação da vez para o player_X
+                self.player_o_label['text'] = 'PLAYER O:'
+                self.player_x_label['text'] = '*PLAYER X:'
 
                 # Seta o player_X como próximo jogador
                 self.active = 0
@@ -438,16 +451,16 @@ class Game:
         """
 
         # Seta o nome do player
-        player_x = tkinter.Label(self.root, font='Arial 10 bold', text='PLAYER X:')
-        player_o = tkinter.Label(self.root, font='Arial 10 bold', text='PLAYER O:')
+        self.player_x_label = tkinter.Label(self.root, font='Arial 10 bold', text='*PLAYER X:')
+        self.player_o_label = tkinter.Label(self.root, font='Arial 10 bold', text='PLAYER O:')
 
         # Seta os pontos do player
         self.player_x_score = tkinter.Label(self.root, font='Arial 10 bold', text=0, width=10, anchor='w')
         self.player_o_score = tkinter.Label(self.root, font='Arial 10 bold', text=0, width=10, anchor='w')
 
         # Distribuição dos layers com o gerenciador de layout grid()
-        player_x.grid(row=3, column=0)
-        player_o.grid(row=4, column=0)
+        self.player_x_label.grid(row=3, column=0)
+        self.player_o_label.grid(row=4, column=0)
 
         self.player_x_score.grid(row=3, column=1)
         self.player_o_score.grid(row=4, column=1)
