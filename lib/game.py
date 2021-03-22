@@ -19,14 +19,12 @@ class Game:
         # Instânciação do valor dos players
         # Player_X
         self.player_x = tkinter.StringVar()
-
         # Player_O
         self.player_o = tkinter.StringVar()
 
         # Seta o valor de cada player
         # Player_X
         self.player_x.set('X')
-
         # Player_O
         self.player_o.set('O')
 
@@ -43,7 +41,6 @@ class Game:
         Responsável por carregar as configurações padrões dos inputs
         :return:
         """
-
         # Seta o valor nos inputs
         self.button_1['text'] = ''
         self.button_2['text'] = ''
@@ -103,7 +100,7 @@ class Game:
         self.button_9['bg'] = '#efefef'
 
     @staticmethod
-    def win_change_color(btn_1, btn_2, btn_3):
+    def winner_change_color(btn_1, btn_2, btn_3):
         """
         Responsável por alterar o background color em caso de vitória
         :return:
@@ -112,257 +109,151 @@ class Game:
         btn_2['bg'] = '#007700'
         btn_3['bg'] = '#007700'
 
-    def win_checker_x(self):
+    def winner_x(self):
+        """
+        Responsável por instânciar os atributos da vitória do player_X
+        :return:
+        """
+        # Incrementa um ponto para o player_X
+        self.player_x_score['text'] += 1
+        # Desativa os inputs
+        self.disable_buttons()
+        # Ativa o botão "again"
+        self.again.configure(state=tkinter.ACTIVE)
+
+    def winner_o(self):
+        """
+        Responsável por instânciar os atributos da vitória do player_O
+        :return:
+        """
+        # Incrementa um ponto para o player_O
+        self.player_o_score['text'] += 1
+        # Desativa os inputs
+        self.disable_buttons()
+        # Ativa o botão "again"
+        self.again.configure(state=tkinter.ACTIVE)
+
+    def winner_checker_x(self):
         """
         Responsável por verificar uma possível vitória no player_X
         :return:
         """
-
         # Linha 0
         if self.button_1['text'] == 'X' and self.button_2['text'] == 'X' and self.button_3['text'] == 'X':
-
-            # Incrementa um ponto para o player_X
-            self.player_x_score['text'] += 1
-
+            # Seta os atributos para o player_X
+            self.winner_x()
             # Altera o background color
-            self.win_change_color(self.button_1, self.button_2, self.button_3)
-
-            # Desativa os inputs
-            self.disable_buttons()
-
-            # Ativa o botão "again"
-            self.again.configure(state=tkinter.ACTIVE)
+            self.winner_change_color(self.button_1, self.button_2, self.button_3)
 
         # Linha 1
         if self.button_4['text'] == 'X' and self.button_5['text'] == 'X' and self.button_6['text'] == 'X':
-
-            # Incrementa um ponto para o player_X
-            self.player_x_score['text'] += 1
-
+            # Seta os atributos para o player_X
+            self.winner_x()
             # Altera o background color
-            self.win_change_color(self.button_4, self.button_5, self.button_6)
-
-            # Desativa os inputs
-            self.disable_buttons()
-
-            # Ativa o botão "again"
-            self.again.configure(state=tkinter.ACTIVE)
+            self.winner_change_color(self.button_4, self.button_5, self.button_6)
 
         # Linha 2
         if self.button_7['text'] == 'X' and self.button_8['text'] == 'X' and self.button_9['text'] == 'X':
-
-            # Incrementa um ponto para o player_X
-            self.player_x_score['text'] += 1
-
+            # Seta os atributos para o player_X
+            self.winner_x()
             # Altera o background color
-            self.win_change_color(self.button_7, self.button_8, self.button_9)
-
-            # Desativa os inputs
-            self.disable_buttons()
-
-            # Ativa o botão "again"
-            self.again.configure(state=tkinter.ACTIVE)
+            self.winner_change_color(self.button_7, self.button_8, self.button_9)
 
         # Coluna 0
         if self.button_1['text'] == 'X' and self.button_4['text'] == 'X' and self.button_7['text'] == 'X':
-
-            # Incrementa um ponto para o player_X
-            self.player_x_score['text'] += 1
-
+            # Seta os atributos para o player_X
+            self.winner_x()
             # Altera o background color
-            self.win_change_color(self.button_1, self.button_4, self.button_7)
-
-            # Desativa os inputs
-            self.disable_buttons()
-
-            # Ativa o botão "again"
-            self.again.configure(state=tkinter.ACTIVE)
+            self.winner_change_color(self.button_1, self.button_4, self.button_7)
 
         # Coluna 1
         if self.button_2['text'] == 'X' and self.button_5['text'] == 'X' and self.button_8['text'] == 'X':
-
-            # Incrementa um ponto para o player_X
-            self.player_x_score['text'] += 1
-
+            # Seta os atributos para o player_X
+            self.winner_x()
             # Altera o background color
-            self.win_change_color(self.button_2, self.button_5, self.button_8)
-
-            # Desativa os inputs
-            self.disable_buttons()
-
-            # Ativa o botão "again"
-            self.again.configure(state=tkinter.ACTIVE)
+            self.winner_change_color(self.button_2, self.button_5, self.button_8)
 
         # Coluna 2
         if self.button_3['text'] == 'X' and self.button_6['text'] == 'X' and self.button_9['text'] == 'X':
-
-            # Incrementa um ponto para o player_X
-            self.player_x_score['text'] += 1
-
+            # Seta os atributos para o player_X
+            self.winner_x()
             # Altera o background color
-            self.win_change_color(self.button_3, self.button_6, self.button_9)
-
-            # Desativa os inputs
-            self.disable_buttons()
-
-            # Ativa o botão "again"
-            self.again.configure(state=tkinter.ACTIVE)
+            self.winner_change_color(self.button_3, self.button_6, self.button_9)
 
         # Direita esquerda
         if self.button_1['text'] == 'X' and self.button_5['text'] == 'X' and self.button_9['text'] == 'X':
-
-            # Incrementa um ponto para o player_X
-            self.player_x_score['text'] += 1
-
+            # Seta os atributos para o player_X
+            self.winner_x()
             # Altera o background color
-            self.win_change_color(self.button_1, self.button_5, self.button_9)
-
-            # Desativa os inputs
-            self.disable_buttons()
-
-            # Ativa o botão "again"
-            self.again.configure(state=tkinter.ACTIVE)
+            self.winner_change_color(self.button_1, self.button_5, self.button_9)
 
         # Esquerda direita
         if self.button_3['text'] == 'X' and self.button_5['text'] == 'X' and self.button_7['text'] == 'X':
-
-            # Incrementa um ponto para o player_X
-            self.player_x_score['text'] += 1
-
+            # Seta os atributos para o player_X
+            self.winner_x()
             # Altera o background color
-            self.win_change_color(self.button_3, self.button_5, self.button_7)
+            self.winner_change_color(self.button_3, self.button_5, self.button_7)
 
-            # Desativa os inputs
-            self.disable_buttons()
-
-            # Ativa o botão "again"
-            self.again.configure(state=tkinter.ACTIVE)
-
-    def win_checker_o(self):
+    def winner_checker_o(self):
         """
         Responsável por verificar uma possível vitória no player_O
         :return:
         """
-
         # Linha 0
         if self.button_1['text'] == 'O' and self.button_2['text'] == 'O' and self.button_3['text'] == 'O':
-
-            # Incrementa um ponto para o player_O
-            self.player_o_score['text'] += 1
-
+            # Seta os atributos para o player_O
+            self.winner_o()
             # Altera o background color
-            self.win_change_color(self.button_1, self.button_2, self.button_3)
-
-            # Desativa os inputs
-            self.disable_buttons()
-
-            # Ativa o botão "again"
-            self.again.configure(state=tkinter.ACTIVE)
+            self.winner_change_color(self.button_1, self.button_2, self.button_3)
 
         # Linha 1
         if self.button_4['text'] == 'O' and self.button_5['text'] == 'O' and self.button_6['text'] == 'O':
-
-            # Incrementa um ponto para o player_O
-            self.player_o_score['text'] += 1
-
+            # Seta os atributos para o player_X
+            self.winner_o()
             # Altera o background color
-            self.win_change_color(self.button_4, self.button_5, self.button_6)
-
-            # Desativa os inputs
-            self.disable_buttons()
-
-            # Ativa o botão "again"
-            self.again.configure(state=tkinter.ACTIVE)
+            self.winner_change_color(self.button_4, self.button_5, self.button_6)
 
         # Linha 2
         if self.button_7['text'] == 'O' and self.button_8['text'] == 'O' and self.button_9['text'] == 'O':
-
-            # Incrementa um ponto para o player_O
-            self.player_o_score['text'] += 1
-
+            # Seta os atributos para o player_X
+            self.winner_o()
             # Altera o background color
-            self.win_change_color(self.button_7, self.button_8, self.button_9)
-
-            # Desativa os inputs
-            self.disable_buttons()
-
-            # Ativa o botão "again"
-            self.again.configure(state=tkinter.ACTIVE)
+            self.winner_change_color(self.button_7, self.button_8, self.button_9)
 
         # Coluna 0
         if self.button_1['text'] == 'O' and self.button_4['text'] == 'O' and self.button_7['text'] == 'O':
-
-            # Incrementa um ponto para o player_O
-            self.player_o_score['text'] += 1
-
+            # Seta os atributos para o player_X
+            self.winner_o()
             # Altera o background color
-            self.win_change_color(self.button_1, self.button_4, self.button_7)
-
-            # Desativa os inputs
-            self.disable_buttons()
-
-            # Ativa o botão "again"
-            self.again.configure(state=tkinter.ACTIVE)
+            self.winner_change_color(self.button_1, self.button_4, self.button_7)
 
         # Coluna 1
         if self.button_2['text'] == 'O' and self.button_5['text'] == 'O' and self.button_8['text'] == 'O':
-
-            # Incrementa um ponto para o player_O
-            self.player_o_score['text'] += 1
-
+            # Seta os atributos para o player_X
+            self.winner_o()
             # Altera o background color
-            self.win_change_color(self.button_2, self.button_5, self.button_8)
-
-            # Desativa os inputs
-            self.disable_buttons()
-
-            # Ativa o botão "again"
-            self.again.configure(state=tkinter.ACTIVE)
+            self.winner_change_color(self.button_2, self.button_5, self.button_8)
 
         # Coluna 2
         if self.button_3['text'] == 'O' and self.button_6['text'] == 'O' and self.button_9['text'] == 'O':
-
-            # Incrementa um ponto para o player_O
-            self.player_o_score['text'] += 1
-
+            # Seta os atributos para o player_X
+            self.winner_o()
             # Altera o background color
-            self.win_change_color(self.button_3, self.button_6, self.button_9)
-
-            # Desativa os inputs
-            self.disable_buttons()
-
-            # Ativa o botão "again"
-            self.again.configure(state=tkinter.ACTIVE)
+            self.winner_change_color(self.button_3, self.button_6, self.button_9)
 
         # Direita esquerda
         if self.button_1['text'] == 'O' and self.button_5['text'] == 'O' and self.button_9['text'] == 'O':
-
-            # Incrementa um ponto para o player_O
-            self.player_o_score['text'] += 1
-
+            # Seta os atributos para o player_X
+            self.winner_o()
             # Altera o background color
-            self.win_change_color(self.button_1, self.button_5, self.button_9)
-
-            # Desativa os inputs
-            self.disable_buttons()
-
-            # Ativa o botão "again"
-            self.again.configure(state=tkinter.ACTIVE)
+            self.winner_change_color(self.button_1, self.button_5, self.button_9)
 
         # Esquerda direita
         if self.button_3['text'] == 'O' and self.button_5['text'] == 'O' and self.button_7['text'] == 'O':
-
-            # Incrementa um ponto para o player_O
-            self.player_o_score['text'] += 1
-
+            # Seta os atributos para o player_X
+            self.winner_o()
             # Altera o background color
-            self.win_change_color(self.button_3, self.button_5, self.button_7)
-
-            # Desativa os inputs
-            self.disable_buttons()
-
-            # Ativa o botão "again"
-            self.again.configure(state=tkinter.ACTIVE)
+            self.winner_change_color(self.button_3, self.button_5, self.button_7)
 
     def full_buttons_checker(self):
         """
@@ -375,7 +266,6 @@ class Game:
 
             # Desativa os inputs
             self.disable_buttons()
-
             # Ativa o botão "again"
             self.again.configure(state=tkinter.ACTIVE)
 
@@ -384,10 +274,8 @@ class Game:
         Responsável por reiniciar os pontos
         :return:
         """
-
         # Reinicia os pontos do player_X
         self.player_x_score['text'] = 0
-
         # Reinicia os pontos do player_O
         self.player_o_score['text'] = 0
 
@@ -407,10 +295,8 @@ class Game:
         :param button: input selecionado
         :return:
         """
-
         # Verifica se o input está livre para receber algum valor
         if button['text'] == '':
-
             # Verifica qual player está ativo: 0 == X, 1 == O
             if self.active == 0:
 
@@ -436,11 +322,9 @@ class Game:
                 self.active = 0
 
             # Verifica se o player_X obteve uma vitória
-            self.win_checker_x()
-
+            self.winner_checker_x()
             # Verifica se o player_O obteve uma vitória
-            self.win_checker_o()
-
+            self.winner_checker_o()
             # Verifica se todos os input foram selecionados e nenhum player obteve vitória
             self.full_buttons_checker()
 
@@ -449,7 +333,6 @@ class Game:
         Responsável por criar o layout de pontos
         :return:
         """
-
         # Seta o nome do player
         self.player_x_label = tkinter.Label(self.root, font='Arial 10 bold', text='*PLAYER X:')
         self.player_o_label = tkinter.Label(self.root, font='Arial 10 bold', text='PLAYER O:')
